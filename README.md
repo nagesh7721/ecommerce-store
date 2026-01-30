@@ -62,10 +62,10 @@ App runs on: http://localhost:3000
 
 ## 📸 Screenshots
 
-### Home / Products Page
+###  Products Page
 ![Home](screenshots/products.png)
 
-### Login Page
+### Home /Login Page
 ![Login](screenshots/login.png)
 
 ### Cart Page
