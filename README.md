@@ -71,6 +71,10 @@ App runs on: http://localhost:3000
 ### Cart Page
 ![Cart](screenshots/cart.png)
 
+### Orders Page
+![Orders](screenshots/orders.png)
+
+
 
 
 
