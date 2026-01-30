@@ -59,6 +59,20 @@ npm start
 App runs on: http://localhost:3000
 
 
+
+## 📸 Screenshots
+
+### Products Page
+![Products](screenshots/products.png)
+
+### Login Page
+![Login](screenshots/login.png)
+
+### Cart Page
+![Cart](screenshots/cart.png)
+
+
+
 Learning Outcomes
 Complete MERN project structure
 JWT Authentication
