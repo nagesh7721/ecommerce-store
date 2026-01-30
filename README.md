@@ -62,14 +62,15 @@ App runs on: http://localhost:3000
 
 ## 📸 Screenshots
 
-### Products Page
-![Products](screenshots/products.png)
+### Home / Products Page
+![Home](screenshots/products.png)
 
 ### Login Page
 ![Login](screenshots/login.png)
 
 ### Cart Page
 ![Cart](screenshots/cart.png)
+
 
 
 
@@ -81,11 +82,7 @@ MongoDB database handling
 React state management
 
 
-👨‍💻 Author
-
-Nagesh Chonde
-BSc Computer Science
-GitHub: https://github.com/nagesh7721
+👨‍💻 Author : Nagesh Chonde,BSc Computer Science,GitHub: https://github.com/nagesh7721
 
 
 🚀 Future Improvements
