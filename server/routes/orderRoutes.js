@@ -7,7 +7,7 @@ const Order = require("../models/Order");
 const {
   placeOrder,
   getMyOrders,
-  getAllOrders,     // ⭐ add
+  getAllOrders,     
   updateOrderStatus,
 } = require("../controllers/orderController");
 
