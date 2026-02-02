@@ -1,96 +1,97 @@
-🛒 E-Commerce Store — MERN Stack
+# 🛒 E-Commerce Store (MERN Stack)
 
-A full-stack E-Commerce web application where users can browse products, manage cart, and place orders with secure authentication. Includes an admin flow to manage products from the database.
+A full-fledged E-Commerce web application built using **MongoDB, Express, React, Node.js** with **JWT Authentication**, **Cart**, **Orders**, and **Admin Dashboard**.
 
+🔗 **Live Backend (Render):**  
+https://ecommerce-store-zks8.onrender.com
 
-🔧 Tech Stack
+---
 
-Frontend
-React.js
-Tailwind CSS
-Axios
-React Router DOM
+## 🚀 Features
 
-Backend
-Node.js
-Express.js
-MongoDB
-JWT Authentication
-REST APIs
+### 👤 User
+- Register & Login (JWT Auth)
+- View Products
+- Add to Cart
+- Remove from Cart
+- Place Order
+- Cancel / Remove Order
 
-✨ Core Features
-User
-Register / Login (JWT)
-View products
-Add to cart
-Place orders
-Responsive UI
+### 🛠 Admin
+- Add Product
+- Delete Product
+- View All Orders
+- Update Order Status (Shipped / Delivered)
 
-Admin
-Add products
-Update products
-Delete products
-Manage product data from MongoDB
+---
 
-ecommerce-store/
-│
-├── client/     → React Frontend
-├── server/     → Node + Express Backend
-└── README.md
+## 🧱 Tech Stack
 
+| Frontend | Backend | Database | Auth | Deployment |
+|----------|---------|----------|------|------------|
+| React    | Node.js | MongoDB Atlas | JWT | Render |
 
+---
 
+## 📸 Screenshots
+
+### 🔐 Login Page
+![Login](./screenshots/login.png)
+
+### 🛍 Products Page
+![Products](./screenshots/products.png)
+
+### 🛒 Cart Page
+![Cart](./screenshots/cart.png)
+
+### 📦 Orders Page
+![Orders](./screenshots/orders.png)
+
+### 🛠 Admin Dashboard
+![Admin](./screenshots/admin.png)
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1️⃣ Clone Repo
+```bash
 git clone https://github.com/nagesh7721/ecommerce-store.git
-cd ecommerce-store
+```
 
+### 2️⃣ Backend Setup
+```bash
 cd server
 npm install
-
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-PORT=5000
-
 npm start
+```
 
-
+### 3️⃣ Frontend Setup
+```bash
 cd client
 npm install
 npm start
-App runs on: http://localhost:3000
+```
 
+---
 
+## 🌍 Environment Variables (.env)
 
-## Screenshots
+```
+MONGO_URI=your_mongodb_atlas_url
+JWT_SECRET=your_secret
+```
 
-### Login
-![Login](screenshots/login.png)
+---
 
-### Products
-![Products](screenshots/products.png)
+## 📌 Project Highlights
+- Proper MVC Structure
+- Role Based Authorization (Admin/User)
+- Real-time Cart → Order flow
+- Production Deployment on Render
+- MongoDB Atlas Cloud Database
 
-### Cart
-![Cart](screenshots/cart.png)
+---
 
-### Orders
-![Orders](screenshots/orders.png)
-
-
-
-
-
-Learning Outcomes
-Complete MERN project structure
-JWT Authentication
-REST API integration
-MongoDB database handling
-React state management
-
-
-👨‍💻 Author : Nagesh Chonde,BSc Computer Science,GitHub: https://github.com/nagesh7721
-
-
-🚀 Future Improvements
-Payment Gateway Integration
-Order History
-Product Search & Filters
-Admin Dashboard UI
+## 👨‍💻 Developed By
+**Nagesh Chonde**
