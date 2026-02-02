@@ -7,11 +7,15 @@ const Order = require("../models/Order");
 const {
   placeOrder,
   getMyOrders,
+  getAllOrders,     // ⭐ add
   updateOrderStatus,
 } = require("../controllers/orderController");
 
 router.post("/", protect, placeOrder);
 router.get("/", protect, getMyOrders);
+
+// ✅ ADMIN: GET ALL ORDERS
+router.get("/admin/all", protect, admin, getAllOrders);
 
 // ✅ DELETE
 router.delete("/:id", protect, async (req, res) => {
@@ -29,7 +33,7 @@ router.delete("/:id", protect, async (req, res) => {
   }
 });
 
-// ✅ CANCEL (must be before /:id)
+// ✅ CANCEL
 router.put("/:id/cancel", protect, async (req, res) => {
   try {
     const order = await Order.findById(req.params.id);
@@ -49,7 +53,7 @@ router.put("/:id/cancel", protect, async (req, res) => {
   }
 });
 
-// ✅ ADMIN UPDATE (last)
+// ✅ ADMIN UPDATE
 router.put("/:id", protect, admin, updateOrderStatus);
 
 module.exports = router;

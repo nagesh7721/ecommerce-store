@@ -1,17 +1,62 @@
+// const express = require("express");
+// const router = express.Router();
+// const protect = require("../middleware/authMiddleware");
+// const Cart = require("../models/Cart");
+// const { addToCart, getUserCart } = require("../controllers/cartController");
+
+// router.post("/", protect, addToCart);
+// router.get("/", protect, getUserCart);
+
+// // ✅ REAL REMOVE (DB मधून)
+// router.delete("/remove/:id", protect, async (req, res) => {
+//   try {
+//     await Cart.findByIdAndDelete(req.params.id);
+//     res.json({ message: "Removed from cart" });
+//   } catch (err) {
+//     res.status(500).json({ message: err.message });
+//   }
+// });
+
+// module.exports = router;
+
+
 const express = require("express");
 const router = express.Router();
 const protect = require("../middleware/authMiddleware");
 const Cart = require("../models/Cart");
-const { addToCart, getUserCart } = require("../controllers/cartController");
 
-router.post("/", protect, addToCart);
-router.get("/", protect, getUserCart);
+// Add to cart
+router.post("/", protect, async (req, res) => {
+  const { productId, quantity } = req.body;
 
-// ✅ REAL REMOVE (DB मधून)
-router.delete("/remove/:id", protect, async (req, res) => {
+  const item = await Cart.create({
+    user: req.user.id,
+    product: productId,
+    quantity,
+  });
+
+  res.json(item);
+});
+
+// Get user cart
+router.get("/", protect, async (req, res) => {
+  const cart = await Cart.find({ user: req.user.id }).populate("product");
+  res.json(cart);
+});
+
+// ⭐⭐ THIS IS MISSING — REMOVE FROM CART ⭐⭐
+router.delete("/:id", protect, async (req, res) => {
   try {
-    await Cart.findByIdAndDelete(req.params.id);
-    res.json({ message: "Removed from cart" });
+    const item = await Cart.findById(req.params.id);
+
+    if (!item) return res.status(404).json({ message: "Item not found" });
+
+    if (item.user.toString() !== req.user.id)
+      return res.status(403).json({ message: "Not allowed" });
+
+    await item.deleteOne();
+
+    res.json({ message: "Item removed" });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

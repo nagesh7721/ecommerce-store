@@ -1,22 +1,22 @@
 const Cart = require("../models/Cart");
 const Order = require("../models/Order");
 
-//PLACE ORDER (save productId)
+// ✅ PLACE ORDER (save productId)
 exports.placeOrder = async (req, res) => {
   try {
-    const cartItems = await Cart.find({ user: req.user.id });
+    const cartItems = await Cart.find({ user: req.user.id }).populate("product");
 
     if (!cartItems.length) {
       return res.status(400).json({ message: "Cart is empty" });
     }
 
     const orderItems = cartItems.map((item) => ({
-      product: item.product,      // ObjectId
+      product: item.product._id,
       quantity: item.quantity,
     }));
 
     const total = cartItems.reduce(
-      (sum, item) => sum + item.price * item.quantity,
+      (sum, item) => sum + item.product.price * item.quantity,
       0
     );
 
@@ -35,11 +35,11 @@ exports.placeOrder = async (req, res) => {
   }
 };
 
-// ✅ GET MY ORDERS (populate product)
+// ✅ GET MY ORDERS
 exports.getMyOrders = async (req, res) => {
   try {
     const orders = await Order.find({ user: req.user.id })
-      .populate("items.product");   // ⭐ important
+      .populate("items.product");
 
     res.json(orders);
   } catch (err) {
@@ -47,7 +47,20 @@ exports.getMyOrders = async (req, res) => {
   }
 };
 
-// ✅ ADMIN UPDATE STATUS (as is)
+// ✅ ADMIN: GET ALL ORDERS (FIXED)
+exports.getAllOrders = async (req, res) => {
+  try {
+    const orders = await Order.find()
+      .populate("user", "name email")   // ⭐ THIS FIX
+      .populate("items.product");
+
+    res.json(orders);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+// ✅ ADMIN UPDATE STATUS
 exports.updateOrderStatus = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id);
